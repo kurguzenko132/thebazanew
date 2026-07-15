@@ -264,6 +264,58 @@ p { font-size: 16px; line-height: 1.6; }
 .data-notice svg { flex: 0 0 auto; color: var(--accent); }
 .data-notice strong { display: block; margin-bottom: 7px; font-size: 16px; }
 .data-notice p { margin: 0; color: var(--muted); font-size: 13px; }
+.service-preview-list { margin-top: 6px; }
+.service-preview-list article { display: grid; grid-template-columns: 1.6fr .65fr 80px; align-items: center; gap: 20px; min-height: 72px; border-bottom: 1px solid var(--border); }
+.service-preview-list strong { display: block; margin-bottom: 4px; font-size: 16px; }
+.service-preview-list span { color: var(--muted); font-size: 12px; }
+.service-preview-list > article > span { color: var(--accent-hover); }
+.service-preview-list button, .product-card button { display: inline-flex; align-items: center; justify-content: flex-end; gap: 8px; border: 0; background: transparent; color: var(--accent-hover); cursor: pointer; }
+.master-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 11px; margin-top: 25px; }
+.master-card { overflow: hidden; border: 1px solid var(--border); background: #141414; }
+.master-portrait { position: relative; height: 262px; overflow: hidden; background: radial-gradient(ellipse at 54% 18%, #a18a78, #4e433a 35%, #191817 73%); }
+.master-portrait::before { position: absolute; top: 15%; left: 29%; width: 44%; height: 54%; border-radius: 48% 48% 43% 43%; background: linear-gradient(105deg, #1a1816, #a28c7a 45%, #2a2521); content: ""; }
+.master-portrait::after { position: absolute; bottom: -23%; left: 8%; width: 84%; height: 57%; border-radius: 52% 52% 0 0; background: #191817; content: ""; }
+.master-portrait span { position: absolute; z-index: 1; top: 15px; left: 15px; color: rgba(255,255,255,.5); font-size: 11px; font-weight: 700; letter-spacing: .1em; line-height: .9; }
+.portrait-2 { background: radial-gradient(ellipse at 40% 16%, #927a68, #41372f 35%, #181716 73%); }
+.portrait-3 { background: radial-gradient(ellipse at 57% 18%, #b09a88, #50443b 37%, #181716 73%); }
+.portrait-4 { background: radial-gradient(ellipse at 47% 14%, #a28772, #40352d 38%, #181716 73%); }
+.master-meta { padding: 17px; }
+.master-meta p { margin: 0 0 8px; color: var(--accent); font-size: 10px; letter-spacing: .1em; }
+.master-meta h3 { margin: 0 0 7px; font-size: 19px; }
+.master-meta > span { display: block; min-height: 36px; color: var(--muted); font-size: 12px; }
+.master-meta .text-link { margin-top: 12px; font-size: 11px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; margin-top: 15px; }
+.portfolio-card { position: relative; display: flex; min-height: 280px; align-items: flex-end; padding: 19px; overflow: hidden; background: linear-gradient(0deg, rgba(0,0,0,.75), transparent 60%), radial-gradient(ellipse at 59% 23%, #96806d, #3f342c 39%, #181716 72%); }
+.portfolio-card::before { position: absolute; top: 12%; left: 27%; width: 48%; height: 57%; border-radius: 49% 49% 42% 42%; background: linear-gradient(105deg, #29211e, #9a806b 47%, #28221e); content: ""; }
+.portfolio-card::after { position: absolute; bottom: -22%; left: 6%; width: 88%; height: 52%; border-radius: 51% 51% 0 0; background: #151414; content: ""; }
+.portfolio-card > div { position: relative; z-index: 1; }
+.portfolio-card span { display: block; margin-bottom: 4px; font-size: 14px; font-weight: 700; letter-spacing: .15em; }
+.portfolio-card small { color: #c7bdb4; font-size: 10px; letter-spacing: .08em; }
+.portfolio-2 { background: linear-gradient(0deg, rgba(0,0,0,.75), transparent 60%), radial-gradient(ellipse at 35% 22%, #b0937d, #41362e 39%, #181716 72%); }
+.portfolio-3 { background: linear-gradient(0deg, rgba(0,0,0,.75), transparent 60%), radial-gradient(ellipse at 50% 12%, #af9b89, #332b26 40%, #181716 72%); }
+.portfolio-4 { background: linear-gradient(0deg, rgba(0,0,0,.75), transparent 60%), radial-gradient(ellipse at 46% 20%, #99806c, #46382f 38%, #181716 72%); }
+.portfolio-5 { background: linear-gradient(0deg, rgba(0,0,0,.75), transparent 60%), radial-gradient(ellipse at 53% 15%, #a78974, #3e322a 39%, #181716 72%); }
+.portfolio-6 { background: linear-gradient(0deg, rgba(0,0,0,.75), transparent 60%), radial-gradient(ellipse at 49% 12%, #b99e88, #463932 41%, #181716 72%); }
+.course-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.course-card { display: flex; min-height: 296px; flex-direction: column; justify-content: flex-end; padding: 21px; overflow: hidden; background: linear-gradient(0deg, #0e0e0e, transparent 86%), radial-gradient(ellipse at 52% 21%, rgba(181,147,113,.48), transparent 25%), #27211d; }
+.course-card:nth-child(even) { background: linear-gradient(0deg, #0e0e0e, transparent 86%), radial-gradient(ellipse at 32% 25%, rgba(181,147,113,.43), transparent 23%), #1f1c19; }
+.course-card span { color: var(--accent-hover); font-size: 10px; letter-spacing: .1em; }
+.course-card h3 { margin: 13px 0 10px; font-size: 19px; line-height: 1.05; }
+.course-card p { margin: 0 0 12px; color: #c9c0b8; font-size: 12px; line-height: 1.4; }
+.course-card .text-link { width: max-content; font-size: 11px; }
+.product-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 25px; }
+.product-card { min-width: 0; padding: 11px; border: 1px solid var(--border); border-radius: 7px; background: #161514; }
+.product-bottle { position: relative; height: 209px; margin-bottom: 13px; overflow: hidden; background: radial-gradient(ellipse at 50% 90%, rgba(183,123,86,.26), transparent 47%), #29231f; }
+.product-bottle::before { position: absolute; bottom: 10px; left: 27%; width: 46%; height: 76%; border-radius: 10px 10px 4px 4px; background: linear-gradient(90deg, #080808, #3a3028 50%, #0b0a0a); box-shadow: 8px 10px 12px rgba(0,0,0,.32); content: ""; }
+.product-bottle::after { position: absolute; top: 17px; left: 40%; width: 20%; height: 32px; border-radius: 4px 4px 0 0; background: #121110; content: ""; }
+.product-bottle span { position: absolute; z-index: 1; bottom: 38%; left: 35%; color: #d6c5b8; font-size: 9px; font-weight: 700; letter-spacing: .08em; line-height: .9; text-align: center; }
+.product-2::before, .product-6::before { width: 55%; left: 23%; height: 70%; clip-path: polygon(12% 0,88% 0,100% 100%,0 100%); border-radius: 0; }
+.product-3::before { width: 63%; height: 36%; bottom: 16px; left: 19%; border-radius: 9px 9px 15px 15px; }
+.product-4::before { width: 35%; left: 34%; height: 70%; border-radius: 10px; }
+.product-5::before { width: 43%; left: 29%; height: 72%; border-radius: 8px; }
+.product-card h3 { margin: 0 0 6px; font-size: 12px; }
+.product-card p { min-height: 34px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.product-card button { width: 100%; margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--border); font-size: 11px; }
 .feature-band { padding: 46px 0; }
 .feature-band-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
 .feature-band-grid article { display: flex; min-height: 110px; gap: 16px; padding: 0 22px; border-left: 1px solid var(--light-border); }
@@ -317,6 +369,8 @@ p { font-size: 16px; line-height: 1.6; }
   .interior-hero-content { grid-template-columns: 1fr 1fr; }
   .feature-band-grid article { padding: 0 14px; }
   .split-title { gap: 42px; }
+  .master-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 767px) {
@@ -397,6 +451,9 @@ p { font-size: 16px; line-height: 1.6; }
   .service-table { padding: 20px; }
   .service-table-heading { grid-template-columns: 1.2fr .7fr; }
   .service-table-heading span:last-child { display: none; }
+  .service-preview-list article { grid-template-columns: 1fr 44px; gap: 15px; padding: 13px 0; }
+  .service-preview-list article > span { display: none; }
+  .service-preview-list strong { font-size: 14px; }
   .data-notice { margin: 25px 0 0; padding: 20px; }
   .feature-band { padding: 39px 0; }
   .feature-band-grid { grid-template-columns: 1fr 1fr; gap: 25px 0; }
@@ -410,6 +467,17 @@ p { font-size: 16px; line-height: 1.6; }
   .contact-cards { grid-template-columns: 1fr; }
   .contact-cards article, .contact-cards article:first-child { min-height: auto; padding: 20px 0; border-top: 1px solid var(--border); border-left: 0; }
   .contact-cards article:first-child { border-top: 0; }
+  .master-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .master-portrait { height: 206px; }
+  .master-meta { padding: 13px; }
+  .master-meta h3 { font-size: 16px; }
+  .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .portfolio-card { min-height: 205px; }
+  .course-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .course-card { min-height: 238px; padding: 15px; }
+  .course-card h3 { font-size: 16px; }
+  .product-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .product-bottle { height: 180px; }
   .site-footer-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
   .site-footer-grid > div, .site-footer-grid > div:first-child { min-height: 0; padding-left: 0; border-left: 0; }
   .site-footer-grid > div:first-child { grid-column: span 2; }
