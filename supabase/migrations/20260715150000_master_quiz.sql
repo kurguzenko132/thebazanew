@@ -106,6 +106,11 @@ alter table public.quiz_answers enable row level security;
 alter table public.quiz_results enable row level security;
 
 -- Only active public configuration can be read by anon; sessions/results remain server-only.
+drop policy if exists "read active quiz settings" on public.quiz_settings;
+drop policy if exists "read active quiz questions" on public.quiz_questions;
+drop policy if exists "read active quiz options" on public.quiz_options;
+drop policy if exists "read active matching tags" on public.matching_tags;
+drop policy if exists "read active master quiz profiles" on public.master_quiz_profiles;
 create policy "read active quiz settings" on public.quiz_settings for select using (is_active);
 create policy "read active quiz questions" on public.quiz_questions for select using (is_active);
 create policy "read active quiz options" on public.quiz_options for select using (is_active);

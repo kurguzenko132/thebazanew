@@ -42,5 +42,7 @@ alter table public.master_quiz_master_options enable row level security;
 alter table public.master_quiz_sessions enable row level security;
 alter table public.master_quiz_answers enable row level security;
 alter table public.master_quiz_results enable row level security;
+drop policy if exists "read active simplified quiz questions" on public.master_quiz_questions;
+drop policy if exists "read active simplified quiz options" on public.master_quiz_options;
 create policy "read active simplified quiz questions" on public.master_quiz_questions for select using (is_active);
 create policy "read active simplified quiz options" on public.master_quiz_options for select using (is_active);
