@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, CalendarDays, Check, Clock3, Package, Scissors, ShieldCheck, Sparkles, Star, UsersRound } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/layout/site-chrome";
+import { MasterQuizDialog } from "@/components/master-quiz/master-quiz-dialog";
 
 type PageKind = "services" | "masters" | "works" | "academy" | "shop" | "about" | "contacts";
 
@@ -14,7 +15,7 @@ const academyPreview = ["ОСНОВЫ БАРБЕРИНГА", "СОВРЕМЕНН
 const shopPreview = ["DAILY CARE", "MATTE FINISH", "FIBER CREAM", "BEARD CARE", "SEA SALT", "SKIN COMFORT"];
 
 function PageHero({ eyebrow, title, description, visual = "chair" }: { eyebrow: string; title: React.ReactNode; description: string; visual?: string }) {
-  return <section className={`interior-hero visual-${visual}`}><div className="container interior-hero-content"><div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p>{description}</p><button className="button">Записаться <ArrowRight size={18} /></button></div><div className="interior-visual" aria-hidden="true"><span>THE<br />BAZA</span></div></div></section>;
+  return <section className={`interior-hero visual-${visual}`}><div className="container interior-hero-content"><div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p>{description}</p><div className="button-row"><button className="button">Записаться <ArrowRight size={18} /></button><MasterQuizDialog sourcePage={visual} className="text-link">Не знаете, кого выбрать? <ArrowRight size={18} /></MasterQuizDialog></div></div><div className="interior-visual" aria-hidden="true"><span>THE<br />BAZA</span></div></div></section>;
 }
 
 function DataNotice({ entity }: { entity: string }) {

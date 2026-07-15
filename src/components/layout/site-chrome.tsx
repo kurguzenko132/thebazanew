@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { MasterQuizDialog } from "@/components/master-quiz/master-quiz-dialog";
 
 const links = [
   ["О нас", "/about"],
@@ -28,7 +29,7 @@ export function SiteHeader() {
       <div className="site-actions"><Link href="/cart" className="cart-link" aria-label="Корзина"><ShoppingBag size={19} /><i>0</i></Link><button className="outline-button">Записаться</button></div>
       <button className="mobile-toggle" onClick={() => setOpen(true)} aria-label="Открыть меню"><Menu /></button>
     </header>
-    {open && <div className="site-mobile-menu" role="dialog" aria-modal="true"><button className="close-button" onClick={() => setOpen(false)} aria-label="Закрыть меню"><X /></button><Link href="/" className="brand">THE BAZA</Link><nav>{links.map(([label, href]) => <Link href={href} onClick={() => setOpen(false)} key={href}>{label}</Link>)}</nav><button className="button">Записаться</button></div>}
+    {open && <div className="site-mobile-menu" role="dialog" aria-modal="true"><button className="close-button" onClick={() => setOpen(false)} aria-label="Закрыть меню"><X /></button><Link href="/" className="brand">THE BAZA</Link><nav>{links.map(([label, href]) => <Link href={href} onClick={() => setOpen(false)} key={href}>{label}</Link>)}</nav><MasterQuizDialog sourcePage="mobile-menu">Не знаете, кого выбрать?</MasterQuizDialog><button className="button">Записаться</button></div>}
   </>;
 }
 

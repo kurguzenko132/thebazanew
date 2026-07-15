@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { MasterQuizDialog } from "@/components/master-quiz/master-quiz-dialog";
 import {
   ArrowRight,
   BadgeCheck,
@@ -45,13 +46,6 @@ const visitSteps = [
   ["04", Check, "Результат", "Покажем укладку и поможем сохранить образ дома."],
 ];
 
-const quizSteps = [
-  { question: "Какая услуга вам нужна?", options: ["Стрижка", "Борода", "Стрижка + борода", "Бритьё", "Уход", "Нужна консультация"] },
-  { question: "Какой стиль вам ближе?", options: ["Классика", "Современный", "Креативный", "Минималистичный", "Не уверен"] },
-  { question: "Что особенно важно в мастере?", options: ["Опыт и точность", "Общение", "Скорость", "Работа с бородой", "Длинные волосы", "Креативность"] },
-  { question: "Когда вам удобно?", options: ["Сегодня", "Завтра", "На этой неделе", "В выходные", "Время неважно"] },
-];
-
 const faqs = [
   ["Как записаться на стрижку?", "Выберите удобный способ записи — кнопка на сайте приведёт к форме или внешней системе бронирования."],
   ["Сколько стоят услуги?", "Актуальные цены и длительность услуг будут опубликованы после заполнения каталога в административной панели."],
@@ -70,16 +64,12 @@ const nav = [
 
 export function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [quizOpen, setQuizOpen] = useState(false);
-  const [quizIndex, setQuizIndex] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setMenuOpen(false);
-        setQuizOpen(false);
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -87,21 +77,9 @@ export function HomePage() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen || quizOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [menuOpen, quizOpen]);
-
-  const chooseAnswer = (answer: string) => {
-    const next = [...answers];
-    next[quizIndex] = answer;
-    setAnswers(next);
-  };
-
-  const closeQuiz = () => {
-    setQuizOpen(false);
-    setQuizIndex(0);
-    setAnswers([]);
-  };
+  }, [menuOpen]);
 
   return (
     <main>
@@ -163,7 +141,7 @@ export function HomePage() {
 
       <section className="quiz-section section-dark">
         <div className="quiz-background" />
-        <div className="container quiz-teaser"><div><p className="eyebrow">ВАШ ИДЕАЛЬНЫЙ МАСТЕР</p><h2>ПОДБЕРЁМ МАСТЕРА<br /><em>ПОД ВАШ ЗАПРОС</em></h2><p>Ответьте на несколько вопросов — и мы предложим мастеров, которые лучше подойдут под ваш стиль и пожелания.</p><button className="button" onClick={() => setQuizOpen(true)}>Пройти опрос <ArrowRight size={18} /></button><small>Это займёт около двух минут</small></div><div className="quiz-preview"><span>ПОДБОР МАСТЕРА</span><div className="progress"><i /></div><p>Услуга · Стиль · Приоритеты · Время</p><div className="quiz-chips"><b>Стрижка</b><b>Современный</b><b>Точность</b></div></div></div>
+        <div className="container quiz-teaser"><div><p className="eyebrow">ВАШ ИДЕАЛЬНЫЙ МАСТЕР</p><h2>ПОДБЕРЁМ МАСТЕРА<br /><em>ПОД ВАШ ЗАПРОС</em></h2><p>Ответьте на несколько вопросов — и мы предложим мастеров, которые лучше подойдут под ваш стиль и пожелания.</p><MasterQuizDialog sourcePage="home">Пройти опрос <ArrowRight size={18} /></MasterQuizDialog><small>Это займёт около двух минут</small></div><div className="quiz-preview"><span>ПОДБОР МАСТЕРА</span><div className="progress"><i /></div><p>Услуга · Стиль · Приоритеты · Время</p><div className="quiz-chips"><b>Стрижка</b><b>Современный</b><b>Точность</b></div></div></div>
       </section>
 
       <section className="care-section section-dark">
@@ -191,7 +169,6 @@ export function HomePage() {
 
       {menuOpen && <div className="mobile-menu" role="dialog" aria-modal="true"><button onClick={() => setMenuOpen(false)} className="close-button" aria-label="Закрыть меню"><X /></button><Link href="/" className="brand">THE BAZA</Link><nav>{nav.map(([label, href]) => <Link href={href} onClick={() => setMenuOpen(false)} key={href}>{label}</Link>)}</nav><button className="button">Записаться <ArrowRight size={18} /></button></div>}
 
-      {quizOpen && <div className="quiz-modal-backdrop" role="presentation"><section className="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-title"><button className="close-button" onClick={closeQuiz} aria-label="Закрыть опрос"><X /></button><p className="eyebrow">ПОДБОР МАСТЕРА</p><h2 id="quiz-title">{quizIndex === quizSteps.length ? "ГОТОВО" : `ШАГ ${quizIndex + 1} ИЗ ${quizSteps.length}`}</h2><div className="progress"><i style={{ width: `${((quizIndex + 1) / quizSteps.length) * 100}%` }} /></div>{quizIndex === quizSteps.length ? <div className="quiz-result"><h3>Спасибо за ответы</h3><p>Подходящих мастеров покажем после подключения базы и расписания.</p><button className="button" onClick={closeQuiz}>Закрыть <X size={17} /></button></div> : <><h3>{quizSteps[quizIndex].question}</h3><div className="answer-grid">{quizSteps[quizIndex].options.map((option) => <button className={answers[quizIndex] === option ? "answer is-selected" : "answer"} onClick={() => chooseAnswer(option)} key={option}>{answers[quizIndex] === option && <Check size={16} />}{option}</button>)}</div><div className="modal-actions"><button className="outline-button" onClick={() => setQuizIndex(Math.max(0, quizIndex - 1))} disabled={quizIndex === 0}>Назад</button><button className="button" disabled={!answers[quizIndex]} onClick={() => setQuizIndex(quizIndex + 1)}>Далее <ArrowRight size={18} /></button></div></>}</section></div>}
     </main>
   );
 }
